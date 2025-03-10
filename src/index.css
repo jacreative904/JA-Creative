@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-maindark: #0B0A07;
+  --color-mainyellow: #F3FF00;
+  --color-mainpink: #F991CC;
+  --color-mainteal: #0AA9D0;
+  --color-maintext: #646464;
+  --color-mainlight: #FBFAF0;
+}
+
+
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  background:#0B0A07;
+  color: #fbfaf0;
+}
+
+/* Typography */
+
+.body-text {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.headline-thin {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.headline-regular {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.headline-fancy {
+  font-family: "Mea Culpa", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hero-headline {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 15rem;
+  line-height: 13rem;
+}
+
+.hero-headline-thin {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 200;
+  font-size: 15rem;
+}
+
+/* Navbar Styling */
+
+.nav-text {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 9%;
+  text-transform: uppercase;
+  color: #FBFAF0;
+  display: inline-block;
+  position: relative;
+}
+
+.nav-text::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #F3FF00;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-text:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-text.left::after {
+  transform-origin: bottom right;
+}
+
+.nav-text.left:hover::after {
+  transform-origin: bottom left;
+}
+
+.nav-cta {
+  background-color:#F3FF00;
+  border: 1px solid #F3FF00;
+  color: #0B0A07;
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 9%;
+  text-transform: uppercase;
+  border-radius: 0px;
+  padding: 10px 30px;
+}
+
+.nav-cta:hover {
+  color:#F3FF00;
+  border: 1px solid #F3FF00;
+  border-style: inset;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.2s ease-out allow-discrete;
+}
+
+
+@layer utilities {
+
+  /* Loading Screen Animation */
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
+  .animate-loading-bar {
+    animation: loading 0.8s ease infinite;
+  }
+}
