@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const MobileMenu = ({menuOpen, setMenuOpen}) => {
 
     return (
-        <div className={`fixed top-0 left-0 w-dvw bg-maindark/95 z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out
+        <div className={`fixed top-0 left-0 w-dvw bg-maindark/95 z-40 flex flex-col  items-center justify-center transition-all duration-300 ease-in-out
                             ${
                             menuOpen 
                                 ? "h-screen opacity-100 pointer-events-auto" 
@@ -26,7 +26,7 @@ const MobileMenu = ({menuOpen, setMenuOpen}) => {
             <Link 
                 to="/"
                 onClick={() => setMenuOpen(false)}
-                className={`text-5xl font-sm text-mainlight my-4 transform transition-transform duration-300
+                className={`text-4xl text-mainlight my-4 transform transition-transform duration-300 mb-5
                         ${
                             menuOpen 
                                 ? "opacity-100 translate-y-0"
@@ -40,7 +40,7 @@ const MobileMenu = ({menuOpen, setMenuOpen}) => {
             <Link 
                 to="/about"
                 onClick={() => setMenuOpen(false)}
-                className={`text-2xl font-semibold text-mainlight my-4 transform transition-transform duration-300
+                className={`text-4xl text-mainlight my-4 transform transition-transform duration-300
                         ${
                             menuOpen 
                                 ? "opacity-100 translate-y-0"
@@ -54,7 +54,7 @@ const MobileMenu = ({menuOpen, setMenuOpen}) => {
             <Link 
                 to="/skills"
                 onClick={() => setMenuOpen(false)}
-                className={`text-2xl font-semibold text-mainlight my-4 transform transition-transform duration-300
+                className={`text-4xl text-mainlight my-4 transform transition-transform duration-300
                         ${
                             menuOpen 
                             ? "opacity-100 translate-y-0"
