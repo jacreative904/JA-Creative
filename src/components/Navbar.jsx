@@ -9,10 +9,10 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
     }, [menuOpen]);
 
     return <nav>
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
             to="/"
-            className='headline-regular self-center text-2xl font-semibold whitespace-nowrap dark:text-white'>
+            className='headline-regular self-center text-2xl font-bold whitespace-nowrap dark:text-white'>
             JA Creative
         </Link>
 
@@ -28,25 +28,25 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
           <li>
             <Link 
                 to="/"
-                className="block font-semibold py-2 px-3 nav-text left">Home
+                className="block font-bold py-2 px-3 nav-text left">Home
             </Link>
           </li>
           <li>
             <Link 
                 to="/about"
-                className="block font-semibold py-2 px-3 nav-text left">About
+                className="block font-bold py-2 px-3 nav-text left">About
             </Link>
           </li>
           <li>
             <Link 
                 to="/skills"
-                className="block font-semibold py-2 px-3 nav-text left">Skills
+                className="block font-bold py-2 px-3 nav-text left">Skills
             </Link>
           </li>
           <li>
             <Link 
             to="/contact" 
-            className="flex font-semibold font-bold text-center nav-cta space-x-3">Contact
+            className="flex font-bold text-center nav-cta space-x-3">Contact
             </Link>
           </li>
         </ul>
