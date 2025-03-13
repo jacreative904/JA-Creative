@@ -10,7 +10,8 @@ const Section2 = () => {
                 <p className="pb-16">Here is an additional paragraph of lackluster rough draft copy. This paragraph is slightly different but not by much. This paragraph will give a brief introduction to various things against the machine once again.</p>
                 <Link 
                     to="/contact"
-                    className="button self-start"><span>Let's Talk</span>
+                    className="button self-start">
+                    <span>Let's Talk</span>
                 </Link>
             </div>
             <div className="flex flex-col w-1/2">
