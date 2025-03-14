@@ -5,17 +5,17 @@ import Button from "./Button";
 const TwoColumn = (props) => {
 
 return (
-    <div class="max-w-screen-2xl flex flex-row items-center justify-center mx-auto gap-[40px] p-44">
-            <div className="flex flex-col w-1/2">
-                <h2 className="headline pb-4">{ props.normalText } <span className="headline-fancy">{ props.fancyText }</span></h2>
-                <p className="pb-16">{ props.bodyText }</p>
+    <div class="flex flex-col-reverse p-4 gap-8 min-h-[100dvh] justify-center">
+            <div className="flex flex-col md:max-w-[70vw]">
+                <h2 className="headline">{ props.normalText } <span className="headline-fancy">{ props.fancyText }</span></h2>
+                <p className="body-text pb-12">{ props.bodyText }</p>
                 <Button 
                     to={ props.link }
                     linkText={ props.linkText }                
                 />
             </div>
-            <div className="flex flex-col w-1/2">
-                <img src={ props.img } alt={ props.alt } className="w-[380px] self-end"/>
+            <div className="flex flex-col">
+                <img src={ props.img } alt={ props.alt } className="two-col-img"/>
             </div>
         </div> 
   )
