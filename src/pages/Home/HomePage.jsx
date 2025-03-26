@@ -65,6 +65,15 @@ const HomePage = ( normalText, fancyText, bodyText, link, linkText ) => {
                     img={twoColumnAlt.img.fileName}
                     alt={twoColumnAlt.img.altTag}
                />
+               <TwoColumn 
+                    normalText={twoColumn.headline.normalText}
+                    fancyText={twoColumn.headline.fancyText}
+                    bodyText={twoColumn.bodyText}
+                    link={twoColumn.buttonInfo.link}
+                    linkText={twoColumn.buttonInfo.linkText}
+                    img={twoColumn.img.fileName}
+                    alt={twoColumn.img.altTag}
+               />
           </div>
   )
 }

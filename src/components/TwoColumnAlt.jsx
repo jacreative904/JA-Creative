@@ -5,7 +5,7 @@ import Button from "./Button";
 const TwoColumnAlt = (props) => {
 
 return (
-    <div class="flex flex-col p-4 gap-8 min-h-[100dvh] justify-center lg:flex-row lg:items-center lg:gap-20 lg:max-w-[90vw]">
+    <div class="flex flex-col p-4 gap-8 min-h-[90dvh] justify-center lg:flex-row lg:items-center lg:gap-20 lg:max-w-[90vw]">
             <div className="flex flex-col">
                 <img src={ props.img } alt={ props.alt } className="two-col-img"/>
             </div>
