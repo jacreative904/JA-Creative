@@ -1,40 +1,50 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --breakpoint-xs: 20rem;
-
+  
   --font-text: 'Roboto Mono', 'monospace';
   --font-display: 'Roboto', 'sans-serif';
   --font-fancy: 'Mea Culpa', 'cursive';
-
-  --color-maindark: #0B0A07;
+  
+  /* -----------------Global------------------- */
+  
+  
+  /*--- Light Mode ---*/
+  --color-mainbg: #FBFAF0;
   --color-mainyellow: #F3FF00;
   --color-mainpink: #F991CC;
   --color-mainteal: #0AA9D0;
   --color-maintext: #646464;
-  --color-mainlight: #FBFAF0;
-  --color-lightgrey: #E0E0E0;
-
+  --color-maingrey: #E0E0E0;
+  --color-maindark: #0B0A07;
+  
+  
+  /*--- Dark Mode ---*/
+  
+  --color-darkbg: #0B0A07;
+  --color-darkyellow: #F3FF00;
+  --color-darkpink: #F991CC;
+  --color-darkteal: #0AA9D0;
+  --color-darktext: #646464;
+  --color-darklight: #FBFAF0;
+  --color-darkgrey: #E0E0E0;
+  
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
 }
-
-/* -----------------Global------------------- */
 
 html, 
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto Mono", monospace;
-  background:#0B0A07;
-  color: #fbfaf0;
+  @apply bg-mainbg dark:bg-maindark text-maintext dark:text-darklight;
 }
 
-/* -----------------Light Typography------------------- */
-
-.body-text {
-  @apply font-text font-normal text-maintext leading-7;
-}
+/* ---Typopgrahy--- */
 
 .headline {
   font-family: "Roboto Condensed", sans-serif;
@@ -42,178 +52,7 @@ body {
 }
 
 .headline-fancy {
-  @apply font-fancy text-5xl text-mainpink normal-case;
-}
-
-/* -----------------Light Elements------------------- */
-
-.two-col-img {
-  @apply max-w-[25rem] md:max-w-[30]
-}
-
-
-/* Light Hero Section */
-
-.hero-headline {
-  @apply font-display text-maindark uppercase font-normal text-6xl leading-9 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem];
-}
-
-.hero-headline-thin {
-  @apply font-display text-maindark uppercase font-thin text-6xl leading-8 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem]; 
-}
-
-.hero-headline-fancy {
-  @apply font-fancy text-mainpink text-7xl normal-case md:text-9xl md:leading-[1rem] lg:text-[10rem] lg:leading-[1rem] xl:text-[12rem];
-}
-
-.hero-body-text {
-  @apply font-text text-maindark font-normal leading-7 md:text-xl md:leading-[2.3rem] lg:text-xl lg:leading-[2.5rem] xl:text-2xl xl:leading-[3rem];
-}
-
-/* Light Navbar Styling */
-
-.nav-text {
-  font-family: "Roboto Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  letter-spacing: 9%;
-  text-transform: uppercase;
-  color: #0B0A07;
-  display: inline-block;
-  position: relative;
-}
-
-.nav-text::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: #F991CC;
-  transition: transform 0.25s ease-out;
-}
-
-.nav-text:hover::after {
-  transform: scaleX(1);
-}
-
-.nav-text.left::after {
-  transform-origin: bottom right;
-}
-
-.nav-text.left:hover::after {
-  transform-origin: bottom left;
-}
-
-.nav-cta {
-  background-color:#F991CC;
-  border: 1px solid #F991CC;
-  color: #FBFAF0;
-  font-family: "Roboto Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  letter-spacing: 9%;
-  text-transform: uppercase;
-  border-radius: 0px;
-  padding: 10px 30px;
-}
-
-.nav-cta:hover {
-  color:#F991CC;
-  border: 1px solid #F991CC;
-  border-style: inset;
-  background-color: rgba(0, 0, 0, 0);
-  transition: all 0.2s ease-out allow-discrete;
-}
-
-/* Light Button Styling */
-
-.button {
-  display: block;
-  width: 200px;
-  height: 50px;
-  padding-top:3px;
-  line-height: 40px;
-  font-size: 1em;
-  font-family: 'Roboto Mono', monospace;
-  text-decoration: none;
-  color: #F991CC;
-  border: 2px solid #F991CC;
-  letter-spacing: 2px;
-  text-align: center;
-  position: relative;
-  transition: all .35s;
-  text-transform: uppercase;
-}
-
-.button span {
-  position: relative;
-  z-index: 2;
-}
-
-.button:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: #F991CC;
-  transition: all .35s;
-}
-
-.button:hover{
-  color: #F991CC;
-  font-weight: bold;
-}
-
-.button:hover:after{
-  width: 100%;
-}
-
-/* -----------------Dark Typography------------------- */
-
-.body-text {
-  font-family: "Roboto Mono", monospace;
-  @apply font-text font-normal text-mainlight leading-7;
-}
-
-.headline {
-  font-family: "Roboto Condensed", sans-serif;
-  @apply text-4xl font-normal uppercase pb-4;
-}
-
-.headline-fancy {
-  @apply font-fancy text-5xl text-mainyellow normal-case;
-}
-
-/* -----------------Dark Elements------------------- */
-
-.two-col-img {
-  @apply max-w-[25rem] md:max-w-[30]
-}
-
-
-/* -------------------Hero Section --------------------*/
-
-.hero-headline {
-  @apply font-display text-mainlight uppercase font-normal text-6xl leading-9 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem];
-}
-
-.hero-headline-thin {
-  @apply font-display text-mainlight uppercase font-thin text-6xl leading-8 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem]; 
-}
-
-.hero-headline-fancy {
-  @apply font-fancy text-mainyellow text-7xl normal-case md:text-9xl md:leading-[1rem] lg:text-[10rem] lg:leading-[1rem] xl:text-[12rem];
-}
-
-.hero-body-text {
-  @apply font-text text-mainlight font-normal leading-7 md:text-xl md:leading-[2.3rem] lg:text-xl lg:leading-[2.5rem] xl:text-2xl xl:leading-[3rem];
+  @apply font-fancy text-7xl text-mainpink normal-case;
 }
 
 /* -------------------Navbar Styling --------------------*/
@@ -225,12 +64,15 @@ body {
   font-style: normal;
   letter-spacing: 9%;
   text-transform: uppercase;
-  color: #FBFAF0;
   display: inline-block;
   position: relative;
+  @apply text-maindark dark:text-darklight;
 }
 
+/* ------------------- XXXXXXXXXXXXXXX HOVER UNDERLINES NEED TO BE FIXED IN NAV SECTION XXXXXXXXXXXXXX --------------------*/
+
 .nav-text::after {
+  @apply bg-mainpink dark:bg-darkyellow;
   content: '';
   position: absolute;
   width: 100%;
@@ -238,7 +80,6 @@ body {
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: #F3FF00;
   transition: transform 0.25s ease-out;
 }
 
@@ -255,25 +96,50 @@ body {
 }
 
 .nav-cta {
-  background-color:#F3FF00;
-  border: 1px solid #F3FF00;
-  color: #0B0A07;
+  color: var(--color-darklight);
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
   letter-spacing: 9%;
   text-transform: uppercase;
+  border: 1px solid;
   border-radius: 0px;
   padding: 10px 30px;
+  @apply bg-mainpink border-mainpink dark:border-darkyellow dark:bg-darkyellow dark:text-darkbg;
 }
 
 .nav-cta:hover {
-  color:#F3FF00;
-  border: 1px solid #F3FF00;
+  border: 1px solid;
   border-style: inset;
   background-color: rgba(0, 0, 0, 0);
   transition: all 0.2s ease-out allow-discrete;
+  @apply text-mainpink dark:text-darkyellow bg-mainbg dark:bg-darkbg border-mainpink dark:border-darkyellow;
+}
+
+/* -------------------Hero Section --------------------*/
+
+.hero-headline {
+  @apply font-display text-maindark dark:text-darklight uppercase font-normal text-6xl leading-9 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem];
+}
+
+.hero-headline-thin {
+  @apply font-display text-maindark dark:text-darklight uppercase font-thin text-6xl leading-8 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem]; 
+}
+
+.hero-headline-fancy {
+  @apply font-fancy text-mainpink dark:text-darkyellow text-7xl normal-case md:text-9xl md:leading-[1rem] lg:text-[10rem] lg:leading-[1rem] xl:text-[12rem];
+}
+
+.hero-body-text {
+  @apply font-text text-maintext dark:text-darklight font-normal leading-7 md:text-xl md:leading-[2.3rem] lg:text-xl lg:leading-[2.5rem] xl:text-2xl xl:leading-[3rem];
+}
+
+
+/* -----------------Dark Elements------------------- */
+
+.two-col-img {
+  @apply max-w-[25rem] md:max-w-[30]
 }
 
 /* Button Styling */
@@ -287,19 +153,22 @@ body {
   font-size: 1em;
   font-family: 'Roboto Mono', monospace;
   text-decoration: none;
-  color: #F3FF00;
-  border: 2px solid #F3FF00;
+  border: 2px solid;
   letter-spacing: 2px;
   text-align: center;
   position: relative;
   transition: all .35s;
   text-transform: uppercase;
+  @apply text-mainbg dark:text-darkbg bg-mainteal dark:bg-darkyellow border-mainteal dark:border-darkyellow;
 }
 
 .button span {
   position: relative;
   z-index: 2;
 }
+
+/* ------------------- XXXXXXXXXXXXXXX HOVER BUTTONS IN DARK MODE NEED TO BE FIXED GLOBALLY XXXXXXXXXXXXXX --------------------*/
+
 
 .button:after {
   position: absolute;
@@ -308,19 +177,18 @@ body {
   left: 0;
   width: 0;
   height: 100%;
-  background: #F3FF00;
   transition: all .35s;
+  @apply bg-mainbg dark:bg-darkbg;
 }
 
 .button:hover{
-  color: #0B0A07;
   font-weight: bold;
+  @apply text-mainteal dark:text-darkyellow border-mainteal dark:border-darkyellow;
 }
 
 .button:hover:after{
   width: 100%;
 }
-
 
 @layer utilities {
 

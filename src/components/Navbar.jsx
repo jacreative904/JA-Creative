@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import DarkModeToggle from './DarkModeToggle';
 
 
 const Navbar = ({menuOpen, setMenuOpen}) => {
@@ -9,11 +10,15 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
 
     return <nav>
       <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-            to="/"
-            className='headline-regular self-center text-2xl font-bold whitespace-nowrap dark:text-white'>
-            JA Creative
-        </Link>
+        <div className="flex gap-5">
+          <Link
+              to="/"
+              className='headline-regular self-center text-2xl font-bold whitespace-nowrap text-maindark dark:text-mainbg'>
+              JA Creative
+          </Link>
+          <DarkModeToggle />
+        </div>
+
 
 {/* ------ Mobile Humburger ----- */}
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
