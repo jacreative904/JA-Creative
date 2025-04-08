@@ -156,7 +156,7 @@ body {
   position: relative;
   transition: all .35s;
   text-transform: uppercase;
-  @apply text-mainbg dark:text-darkbg bg-mainteal dark:bg-darkyellow border-mainteal dark:border-darkyellow;
+  @apply text-mainbg dark:text-darkbg bg-mainpink dark:bg-darkyellow border-mainpink dark:border-darkyellow;
 }
 
 .button span {
