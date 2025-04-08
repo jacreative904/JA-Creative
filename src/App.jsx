@@ -2,15 +2,15 @@ import React, { useState, Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import "./index.css";
 
-import HomePage from './pages/Home/HomePage';
-import AboutPage from './pages/About/AboutPage';
-import SkillsPage from './pages/skills/SkillsPage';
-import ContactPage from './pages/Contact/ContactPage';
+import HomePage from './pages/Home/HomePage.jsx';
+import AboutPage from './pages/About/AboutPage.jsx';
+import SkillsPage from './pages/skills/SkillsPage.jsx';
+import ContactPage from './pages/Contact/ContactPage.jsx';
 
-import Navbar from './components/Navbar'
-import MobileMenu from './components/MobileMenu';
-import LoadingScreen from './components/LoadingScreen';
-import NotFoundPage from './components/NotFoundPage';
+import Navbar from './components/Navbar.jsx'
+import MobileMenu from './components/MobileMenu.jsx';
+import LoadingScreen from './components/LoadingScreen.jsx';
+import NotFoundPage from './components/NotFoundPage.jsx';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
