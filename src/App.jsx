@@ -24,13 +24,13 @@ function App() {
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
 
         <Suspense fallback={<LoadingScreen />}>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/skills' element={<SkillsPage />} />
-          <Route path='/contact' element={<ContactPage />} />
-          <Route path='*' element={<NotFoundPage />} />
-        </Routes>
+          <Routes>
+            <Route path='/JA-Creative' element={<HomePage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/skills' element={<SkillsPage />} />
+            <Route path='/contact' element={<ContactPage />} />
+            <Route path='*' element={<NotFoundPage />} />
+          </Routes>
       </Suspense>
       </div>
     </>
