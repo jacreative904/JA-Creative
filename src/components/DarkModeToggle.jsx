@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import moon from '../assets/moon.svg';
+import sun from '../assets/sun.svg';
 
 const DarkModeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -20,9 +22,14 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setIsDarkMode(!isDarkMode)}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+      className="bg-linear-to-r from-mainteal to-mainpink dark:to-darkyellow bg-no-repeat bg-center bg-contain w-20 grid justify-items-stretch content-center rounded-2xl"
     >
-      {isDarkMode ? '🌙' : '☀️'}
+      { isDarkMode 
+      ?     
+          <img src={moon} className='h-6 pl-2 justify-self-start'/>
+      :
+          <img src={sun} className='h-6 pr-2 justify-self-end'/>
+      }
     </button>
   );
 };
