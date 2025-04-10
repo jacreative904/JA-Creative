@@ -164,9 +164,6 @@ body {
   z-index: 2;
 }
 
-/* ------------------- XXXXXXXXXXXXXXX HOVER BUTTONS IN DARK MODE NEED TO BE FIXED GLOBALLY XXXXXXXXXXXXXX --------------------*/
-
-
 .button:after {
   position: absolute;
   content: "";
@@ -175,12 +172,12 @@ body {
   width: 0;
   height: 100%;
   transition: all .35s;
-  @apply bg-mainbg dark:bg-darkbg;
+  @apply bg-mainbg/100 dark:bg-darkbg/100;
 }
 
 .button:hover{
   font-weight: bold;
-  @apply text-mainteal dark:text-darkyellow border-mainteal dark:border-darkyellow;
+  @apply text-mainteal border-mainteal;
 }
 
 .button:hover:after{
