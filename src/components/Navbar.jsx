@@ -1,15 +1,45 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
 import DarkModeToggle from './DarkModeToggle';
 
 
 const Navbar = ({menuOpen, setMenuOpen}) => {
+    const navItemsRef = useRef([]);
+
     useEffect(() => {
         document.body.style.overflow = menuOpen ? "hidden" : "";
     }, [menuOpen]);
 
-    return <nav>
-      <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+    useEffect(() => {
+        // Animation function
+        const runAnimation = () => {
+            const validElements = navItemsRef.current.filter(el => el !== null);
+            
+            if (validElements.length > 0) {
+                // Set initial state - items start from bottom with 0% opacity
+                gsap.set(validElements, { opacity: 0, y: 30 });
+                
+                // Animate in with stagger: Home -> About -> Skills
+                gsap.to(validElements, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    ease: "power2.out",
+                    delay: 0.5
+                });
+            }
+        };
+
+        // Use a timeout to ensure elements are rendered and page is ready
+        const timer = setTimeout(runAnimation, 100);
+        
+        return () => clearTimeout(timer);
+    }, []);
+
+    return <nav className="w-full px-4 py-4">
+      <div className="flex flex-wrap items-center justify-between">
         <div className="flex gap-5">
           <Link
               to="/"
@@ -27,33 +57,35 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
         </div>
 
  {/* ------ Desktop Menu ----- */}       
-      <div className="items-center justify-between hidden w-screen md:flex md:w-auto md:order-1" id="navbar-cta">
-        <ul className="flex flex-col p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
-          <li>
+      <div className="items-center justify-center hidden md:flex md:w-auto md:order-1 absolute left-1/2 transform -translate-x-1/2" id="navbar-cta">
+        <ul className="flex flex-col p-4 md:p-0 mt-4 md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+          <li ref={el => navItemsRef.current[0] = el} className="nav-item">
             <Link 
                 to="/"
                 className="block font-bold py-2 px-3 nav-text left">Home
             </Link>
           </li>
-          <li>
+          <li ref={el => navItemsRef.current[1] = el} className="nav-item">
             <Link 
                 to="/about"
                 className="block font-bold py-2 px-3 nav-text left">About
             </Link>
           </li>
-          <li>
+          <li ref={el => navItemsRef.current[2] = el} className="nav-item">
             <Link 
                 to="/skills"
                 className="block font-bold py-2 px-3 nav-text left">Skills
             </Link>
           </li>
-          <li>
-            <Link 
-            to="/contact" 
-            className="flex font-bold text-center nav-cta space-x-3">Contact
-            </Link>
-          </li>
         </ul>
+      </div>
+      
+      {/* ------ Contact Button (Right Side) ----- */}
+      <div className="hidden md:flex md:order-2">
+        <Link 
+          to="/contact" 
+          className="flex font-bold text-center nav-cta space-x-3">Contact
+        </Link>
       </div>
       </div>
       </div>

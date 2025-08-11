@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+// LoadingScreen component - Currently disabled in App.jsx but preserved for future use
+// To re-enable: uncomment the import and usage in App.jsx
 const LoadingScreen = ({ onComplete }) => {
     const [text, setText] = useState("");
     const fullText = "Let's Create";

@@ -57,6 +57,52 @@ body {
 
 /* -------------------Navbar Styling --------------------*/
 
+.nav-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* -------------------Animation Classes --------------------*/
+
+/* Animation initial states */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.animate-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Text splitting classes */
+.split-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Performance optimization for animated elements */
+.will-animate {
+  will-change: transform, opacity;
+}
+
 .nav-text {
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
@@ -136,7 +182,7 @@ body {
 }
 
 .two-col-img {
-  @apply max-w-[25rem] md:max-w-[30]
+  @apply max-w-[25rem] md:max-w-[30rem];
 }
 
 /* Button Styling */
@@ -186,7 +232,8 @@ body {
 
 @layer utilities {
 
-  /* Loading Screen Animation */
+  /* Loading Screen Animation - Preserved for future use (currently disabled) */
+  /* These animations are used by the LoadingScreen component */
 
   @keyframes blink {
     0%, 100% {
