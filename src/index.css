@@ -45,6 +45,7 @@
   --color-darktext: #646464;
   --color-darklight: #FBFAF0;
   --color-darkgrey: #E0E0E0;
+  --color-hovergrey: #292929;
   
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
@@ -85,7 +86,7 @@ body {
 }
 
 .hero-line {
-  @apply text-darkgrey dark:text-darktext;
+  @apply text-darkgrey dark:text-hovergrey;
 }
 
 .animate-slide-left {

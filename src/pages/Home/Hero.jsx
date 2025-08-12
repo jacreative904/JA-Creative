@@ -61,12 +61,18 @@ const Hero = () => {
     const contactLink = document.querySelector('a[href="/contact"]');
     const phrase4Elements = document.querySelectorAll('.phrase4');
     
+    // Helper function to get the appropriate color based on theme
+    const getHoverColor = () => {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      return isDarkMode ? '#F3FF00' : '#F991CC'; // mainyellow for dark, mainpink for light
+    };
+
     const handleAboutMouseEnter = () => {
       phrase1Elements.forEach(element => {
         const originalText = element.textContent;
-        // Change color to mainpink
+        // Change color based on theme
         gsap.to(element, {
-          color: '#F991CC',
+          color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
@@ -87,9 +93,9 @@ const Hero = () => {
     const handleSkillsMouseEnter = () => {
       phrase2Elements.forEach(element => {
         const originalText = element.textContent;
-        // Change color to mainpink
+        // Change color based on theme
         gsap.to(element, {
-          color: '#F991CC',
+          color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
@@ -110,9 +116,9 @@ const Hero = () => {
     const handleProjectsMouseEnter = () => {
       phrase3Elements.forEach(element => {
         const originalText = element.textContent;
-        // Change color to mainpink
+        // Change color based on theme
         gsap.to(element, {
-          color: '#F991CC',
+          color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
@@ -133,9 +139,9 @@ const Hero = () => {
     const handleContactMouseEnter = () => {
       phrase4Elements.forEach(element => {
         const originalText = element.textContent;
-        // Change color to mainpink
+        // Change color based on theme
         gsap.to(element, {
-          color: '#F991CC',
+          color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
