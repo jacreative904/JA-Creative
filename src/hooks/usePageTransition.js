@@ -21,7 +21,7 @@ export const usePageTransition = () => {
   // Get the appropriate color based on theme
   const getTransitionColor = useCallback(() => {
     const isDarkMode = document.documentElement.classList.contains('dark');
-    return isDarkMode ? '#F3FF00' : '#F991CC'; // mainyellow for dark, mainpink for light
+    return isDarkMode ? '#292929' : '#F991CC'; // hovergrey for dark, mainpink for light
   }, []);
 
   // Main transition function
@@ -31,6 +31,13 @@ export const usePageTransition = () => {
     }
 
     if (isTransitioning) return;
+
+    // If navigating to home page, reset transition state
+    if (targetRoute === '/') {
+      resetTransitionState();
+      navigate(targetRoute);
+      return;
+    }
 
     const phraseClass = routePhraseMap[targetRoute];
     if (!phraseClass) {
@@ -66,10 +73,12 @@ export const usePageTransition = () => {
       onComplete: () => {
         setIsTransitioning(false);
         setCurrentTransitionColor(null);
-        // Reset transition state after a delay to allow new page to render
-        setTimeout(() => {
-          resetTransitionState();
-        }, 100);
+        // Update transition state to maintain background color on destination page
+        updateTransitionState({
+          isTransitioning: false,
+          backgroundColor: transitionColor,
+          targetRoute: targetRoute
+        });
       }
     });
 
@@ -122,9 +131,61 @@ export const usePageTransition = () => {
       ease: "power2.inOut"
     }, 0.3); // Start expanding right after color change
 
+    // Step 3.5: Change navigation text color as circle expands over it
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    const navTextColor = isDarkMode ? '#0B0A07' : '#F9F9F9'; // maindark for dark mode, mainbg for light mode
+    
+    tl.to('.nav-text, .nav-cta', {
+      color: navTextColor,
+      duration: 0.4,
+      ease: "power2.out"
+    }, 0.7); // Start changing nav color as circle expands
+
     // Step 4: Navigate to new page WELL AFTER circle is fully expanded
     tl.call(() => {
       navigate(targetRoute);
+      
+      // Immediately apply navigation styling for interior pages to prevent flash
+      setTimeout(() => {
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        const navLinks = document.querySelectorAll('.nav-text');
+        const contactButton = document.querySelector('a[href="/contact"]');
+        const logoLink = document.querySelector('a[href="/"]');
+        
+        // Apply logo styling immediately
+        if (logoLink) {
+          if (!isDarkMode && transitionColor === '#F991CC') {
+            // Light mode with pink background: logo should be white
+            logoLink.style.color = '#F9F9F9';
+          } else if (isDarkMode) {
+            // Dark mode: logo should be mainbg
+            logoLink.style.color = '#F9F9F9';
+          }
+        }
+        
+        if (isDarkMode) {
+          // Dark mode: immediately set nav text to mainbg for contrast
+          navLinks.forEach(link => {
+            link.style.color = '#F9F9F9';
+            link.style.setProperty('--underline-color', '#F9F9F9');
+          });
+          
+          if (contactButton) {
+            contactButton.style.backgroundColor = '#0B0A07';
+            contactButton.style.color = '#F9F9F9';
+          }
+        } else {
+          // Light mode: set underlines to mainbg
+          navLinks.forEach(link => {
+            link.style.setProperty('--underline-color', '#F9F9F9');
+          });
+          
+          if (contactButton) {
+            contactButton.style.backgroundColor = '#F9F9F9';
+            contactButton.style.color = '#F991CC';
+          }
+        }
+      }, 50); // Very short delay to ensure DOM is ready
     }, null, 1.5); // Wait extra time to ensure complete coverage
 
     // Step 5: Fade out overlays and reveal new page
@@ -151,11 +212,33 @@ export const usePageTransition = () => {
     document.querySelectorAll('.transition-overlay').forEach(el => el.remove());
   }, []);
 
+  // Reset transition function for navigating back to home
+  const resetTransition = useCallback(() => {
+    resetTransitionState();
+    setIsTransitioning(false);
+    setCurrentTransitionColor(null);
+    // Clean up any remaining overlays
+    document.querySelectorAll('.transition-overlay').forEach(el => el.remove());
+    
+    // Reset navigation text colors to their original state
+    gsap.set('.nav-text, .nav-cta', {
+      color: '', // Reset to CSS default
+      clearProps: 'color'
+    });
+    
+    // Reset logo color to original state
+    const logoLink = document.querySelector('a[href="/"]');
+    if (logoLink) {
+      logoLink.style.removeProperty('color');
+    }
+  }, [resetTransitionState]);
+
   return {
     isTransitioning,
     currentTransitionColor,
     triggerTransition,
     cancelTransition,
+    resetTransition,
     routePhraseMap
   };
 };

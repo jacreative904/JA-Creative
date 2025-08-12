@@ -59,6 +59,27 @@ body {
   @apply bg-mainbg dark:bg-maindark text-maintext dark:text-darklight;
 }
 
+/* Remove padding when body has transition background */
+body[style*="background-color"] {
+  padding: 0 !important;
+}
+
+/* Ensure home page has no overflow */
+body {
+  overflow: hidden;
+}
+
+html {
+  overflow: hidden;
+}
+
+/* Specific styling for home page to prevent any scrolling */
+body:has([data-page="home"]) {
+  overflow: hidden !important;
+  height: 100vh !important;
+  padding: 0 !important;
+}
+
 /* ---Typopgrahy--- */
 
 .headline {
@@ -151,11 +172,11 @@ body {
   bottom: 0;
   left: -5%;
   transition: transform 0.25s ease-out;
-  background-color: #F991CC; /* mainpink for light mode */
+  background-color: var(--underline-color, #F991CC); /* Use custom property or fallback to mainpink */
 }
 
 .dark .nav-text::after {
-  background-color: #F3FF00; /* mainyellow for dark mode */
+  background-color: var(--underline-color, #F9F9F9); /* Use custom property or fallback to mainbg */
 }
 
 .nav-text:hover::after {
@@ -185,11 +206,8 @@ body {
 }
 
 .nav-cta:hover {
-  border: 1px solid;
-  border-style: inset;
-  background-color: rgba(0, 0, 0, 0);
-  transition: all 0.2s ease-out allow-discrete;
-  @apply text-mainpink dark:text-darkyellow bg-mainbg dark:bg-darkbg border-mainpink dark:border-darkyellow;
+  transition: all 0.2s ease-out;
+  @apply bg-mainteal border-mainteal text-mainbg;
 }
 
 /* -------------------Hero Section --------------------*/

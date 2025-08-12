@@ -39,14 +39,14 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
         return () => clearTimeout(timer);
     }, []);
 
-    return <nav className="w-full px-4 py-4">
+    return <nav className="w-full px-8 py-4">
       <div className="flex flex-wrap items-center justify-between">
         <div className="flex gap-5">
-          <Link
+          <TransitionLink
               to="/"
               className='headline-regular self-center text-2xl font-bold whitespace-nowrap text-maindark dark:text-mainbg'>
               JA Creative
-          </Link>
+          </TransitionLink>
           <DarkModeToggle />
         </div>
 
@@ -56,7 +56,7 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
         {/* Contact Button - Desktop */}
         <TransitionLink 
           to="/contact"
-          className="hidden md:block font-bold py-3 px-8 bg-mainpink dark:bg-mainyellow text-mainbg dark:text-darkbg transition-colors duration-300">
+          className="hidden md:block nav-cta">
           CONTACT
         </TransitionLink>
         
