@@ -176,7 +176,7 @@ body:has([data-page="home"]) {
 }
 
 .dark .nav-text::after {
-  background-color: var(--underline-color, #F9F9F9); /* Use custom property or fallback to mainbg */
+  background-color: var(--underline-color, #F3FF00); /* Use custom property or fallback to mainyellow */
 }
 
 .nav-text:hover::after {
@@ -277,6 +277,22 @@ body:has([data-page="home"]) {
 
 .button:hover:after{
   width: 100%;
+}
+
+/* -------------------Custom Cursor Styling --------------------*/
+
+.custom-cursor-circle {
+  @apply border-mainpink dark:border-mainyellow;
+}
+
+.custom-cursor-dot {
+  @apply bg-mainpink dark:bg-mainyellow;
+}
+
+/* Hide default cursor on all interactive elements */
+a, button, .nav-text, .nav-cta, .button, 
+a *, button *, .nav-text *, .nav-cta *, .button * {
+  cursor: none !important;
 }
 
 @layer utilities {

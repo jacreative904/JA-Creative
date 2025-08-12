@@ -9,6 +9,7 @@ import ContactPage from './pages/Contact/ContactPage.jsx';
 
 import Navbar from './components/Navbar.jsx'
 import MobileMenu from './components/MobileMenu.jsx';
+import CustomCursor from './components/CustomCursor.jsx';
 // import LoadingScreen from './components/LoadingScreen.jsx'; // Commented out - can be re-enabled later
 import NotFoundPage from './components/NotFoundPage.jsx';
 import { PageTransitionProvider } from './contexts/PageTransitionContext.jsx';
@@ -24,6 +25,7 @@ function App() {
       <div className="min-h-screen">
         {/* Removed opacity transition classes - can be restored when loading screen is re-enabled */}
         {/* <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}> */}
+        <CustomCursor />
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
 
