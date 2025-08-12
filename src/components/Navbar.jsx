@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import DarkModeToggle from './DarkModeToggle';
+import TransitionLink from './TransitionLink';
 
 
 const Navbar = ({menuOpen, setMenuOpen}) => {
@@ -53,11 +54,11 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
 {/* ------ Mobile Humburger ----- */}
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
         {/* Contact Button - Desktop */}
-        <Link 
+        <TransitionLink 
           to="/contact"
           className="hidden md:block font-bold py-3 px-8 bg-mainpink dark:bg-mainyellow text-mainbg dark:text-darkbg transition-colors duration-300">
           CONTACT
-        </Link>
+        </TransitionLink>
         
         <div className='w-7 h-5 relative cursor-pointer z-40 md:hidden' onClick={() => setMenuOpen((prev) => !prev)}>
             &#9776;
@@ -67,22 +68,22 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
       <div className="items-center justify-center hidden md:flex md:w-auto md:order-1 absolute left-1/2 transform -translate-x-1/2" id="navbar-cta">
         <ul className="flex flex-col p-4 md:p-0 mt-4 md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li ref={el => navItemsRef.current[0] = el} className="nav-item">
-            <Link 
+            <TransitionLink 
                 to="/about"
                 className="block font-bold py-2 px-3 nav-text left">About
-            </Link>
+            </TransitionLink>
           </li>
           <li ref={el => navItemsRef.current[1] = el} className="nav-item">
-            <Link 
+            <TransitionLink 
                 to="/skills"
                 className="block font-bold py-2 px-3 nav-text left">Skills
-            </Link>
+            </TransitionLink>
           </li>
           <li ref={el => navItemsRef.current[2] = el} className="nav-item">
-            <Link 
+            <TransitionLink 
                 to="/projects"
                 className="block font-bold py-2 px-3 nav-text left">Projects
-            </Link>
+            </TransitionLink>
           </li>
         </ul>
       </div>

@@ -11,13 +11,14 @@ import Navbar from './components/Navbar.jsx'
 import MobileMenu from './components/MobileMenu.jsx';
 // import LoadingScreen from './components/LoadingScreen.jsx'; // Commented out - can be re-enabled later
 import NotFoundPage from './components/NotFoundPage.jsx';
+import { PageTransitionProvider } from './contexts/PageTransitionContext.jsx';
 
 function App() {
   // const [isLoaded, setIsLoaded] = useState(false); // Commented out - loading screen disabled
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
+    <PageTransitionProvider>
       {/* Loading screen disabled - uncomment the lines below to re-enable */}
       {/* {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />} */}
       <div className="min-h-screen">
@@ -37,7 +38,7 @@ function App() {
           </Routes>
       </Suspense>
       </div>
-    </>
+    </PageTransitionProvider>
   );
 }
 
