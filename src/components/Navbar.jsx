@@ -20,7 +20,7 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
                 // Set initial state - items start from bottom with 0% opacity
                 gsap.set(validElements, { opacity: 0, y: 30 });
                 
-                // Animate in with stagger: About -> Skills -> Projects -> Contact
+                // Animate in with stagger: About -> Skills -> Projects
                 gsap.to(validElements, {
                     opacity: 1,
                     y: 0,
@@ -51,7 +51,14 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
 
 
 {/* ------ Mobile Humburger ----- */}
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
+        {/* Contact Button - Desktop */}
+        <Link 
+          to="/contact"
+          className="hidden md:block font-bold py-3 px-8 bg-mainpink dark:bg-mainyellow text-mainbg dark:text-darkbg transition-colors duration-300">
+          CONTACT
+        </Link>
+        
         <div className='w-7 h-5 relative cursor-pointer z-40 md:hidden' onClick={() => setMenuOpen((prev) => !prev)}>
             &#9776;
         </div>
@@ -75,12 +82,6 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
             <Link 
                 to="/projects"
                 className="block font-bold py-2 px-3 nav-text left">Projects
-            </Link>
-          </li>
-          <li ref={el => navItemsRef.current[3] = el} className="nav-item">
-            <Link 
-                to="/contact"
-                className="block font-bold py-2 px-3 nav-text left">Contact
             </Link>
           </li>
         </ul>

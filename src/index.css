@@ -54,7 +54,7 @@
 html, 
 body {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   font-family: "Roboto Mono", monospace;
   @apply bg-mainbg dark:bg-maindark text-maintext dark:text-darklight;
 }
@@ -192,7 +192,7 @@ body {
 
 .hero-headline {
   font-family: 'Geist', sans-serif;
-  font-weight: 600;
+  font-weight: semibold;
   @apply text-maindark dark:text-darklight uppercase text-xl leading-5 md:text-xl md:leading-[3rem] lg:text-xl lg:leading-[3rem] xl:text-[4rem] xl:leading-[4rem];
 }
 

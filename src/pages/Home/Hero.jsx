@@ -5,13 +5,18 @@ import { useGSAP } from '@gsap/react';
 const Hero = () => {
   const container = useRef();
 
-  // Custom scramble effect function
-  const scrambleText = (element, finalText, duration = 1) => {
+  // Custom scramble effect function with proper cleanup
+  const scrambleText = (element, finalText) => {
+    // Clear any existing scramble interval
+    if (element.scrambleInterval) {
+      clearInterval(element.scrambleInterval);
+    }
+    
     const chars = "abcdefghijklmnopqrstuvwxyz";
     const originalText = finalText;
     let iteration = 0;
     
-    const interval = setInterval(() => {
+    element.scrambleInterval = setInterval(() => {
       element.textContent = originalText
         .split("")
         .map((letter, index) => {
@@ -23,7 +28,10 @@ const Hero = () => {
         .join("");
       
       if (iteration >= originalText.length) {
-        clearInterval(interval);
+        clearInterval(element.scrambleInterval);
+        element.scrambleInterval = null;
+        // Ensure final text is exactly correct
+        element.textContent = originalText;
       }
       
       iteration += 1 / 3;
@@ -67,21 +75,43 @@ const Hero = () => {
       return isDarkMode ? '#F3FF00' : '#F991CC'; // mainyellow for dark, mainpink for light
     };
 
+    // Store original text for all elements
+    const storeOriginalText = (elements) => {
+      elements.forEach(element => {
+        if (!element.dataset.originalText) {
+          element.dataset.originalText = element.textContent;
+        }
+      });
+    };
+
+    // Store original text for all phrase elements
+    storeOriginalText(phrase1Elements);
+    storeOriginalText(phrase2Elements);
+    storeOriginalText(phrase3Elements);
+    storeOriginalText(phrase4Elements);
+
     const handleAboutMouseEnter = () => {
       phrase1Elements.forEach(element => {
-        const originalText = element.textContent;
+        const originalText = element.dataset.originalText;
         // Change color based on theme
         gsap.to(element, {
           color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
-        scrambleText(element, originalText, 1);
+        scrambleText(element, originalText);
       });
     };
 
     const handleAboutMouseLeave = () => {
       phrase1Elements.forEach(element => {
+        // Clear any ongoing scramble
+        if (element.scrambleInterval) {
+          clearInterval(element.scrambleInterval);
+          element.scrambleInterval = null;
+        }
+        // Restore original text
+        element.textContent = element.dataset.originalText;
         // Reset color
         gsap.to(element, {
           color: 'inherit',
@@ -92,19 +122,26 @@ const Hero = () => {
 
     const handleSkillsMouseEnter = () => {
       phrase2Elements.forEach(element => {
-        const originalText = element.textContent;
+        const originalText = element.dataset.originalText;
         // Change color based on theme
         gsap.to(element, {
           color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
-        scrambleText(element, originalText, 1);
+        scrambleText(element, originalText);
       });
     };
 
     const handleSkillsMouseLeave = () => {
       phrase2Elements.forEach(element => {
+        // Clear any ongoing scramble
+        if (element.scrambleInterval) {
+          clearInterval(element.scrambleInterval);
+          element.scrambleInterval = null;
+        }
+        // Restore original text
+        element.textContent = element.dataset.originalText;
         // Reset color
         gsap.to(element, {
           color: 'inherit',
@@ -115,19 +152,26 @@ const Hero = () => {
 
     const handleProjectsMouseEnter = () => {
       phrase3Elements.forEach(element => {
-        const originalText = element.textContent;
+        const originalText = element.dataset.originalText;
         // Change color based on theme
         gsap.to(element, {
           color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
-        scrambleText(element, originalText, 1);
+        scrambleText(element, originalText);
       });
     };
 
     const handleProjectsMouseLeave = () => {
       phrase3Elements.forEach(element => {
+        // Clear any ongoing scramble
+        if (element.scrambleInterval) {
+          clearInterval(element.scrambleInterval);
+          element.scrambleInterval = null;
+        }
+        // Restore original text
+        element.textContent = element.dataset.originalText;
         // Reset color
         gsap.to(element, {
           color: 'inherit',
@@ -138,19 +182,26 @@ const Hero = () => {
 
     const handleContactMouseEnter = () => {
       phrase4Elements.forEach(element => {
-        const originalText = element.textContent;
+        const originalText = element.dataset.originalText;
         // Change color based on theme
         gsap.to(element, {
           color: getHoverColor(),
           duration: 0.3
         });
         // Apply scramble effect
-        scrambleText(element, originalText, 1);
+        scrambleText(element, originalText);
       });
     };
 
     const handleContactMouseLeave = () => {
       phrase4Elements.forEach(element => {
+        // Clear any ongoing scramble
+        if (element.scrambleInterval) {
+          clearInterval(element.scrambleInterval);
+          element.scrambleInterval = null;
+        }
+        // Restore original text
+        element.textContent = element.dataset.originalText;
         // Reset color
         gsap.to(element, {
           color: 'inherit',
@@ -204,18 +255,18 @@ const Hero = () => {
   return (
     <>
     <div ref={container} className="flex flex-col p-4 justify-end h-[calc(100dvh-78px)]">
-            <div className="flex flex-row">        
-                <h1 className="hero-headline sm:max-w-[900px]" style={{lineHeight: '0.9'}}>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}><span className="phrase1">a</span>ny time things seem</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>a <span className="phrase1">bit</span> <span className="phrase2">stuff</span>y, open a</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>window <span className="phrase1">about</span> <span className="phrase2">i</span>t. View</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>the la<span className="phrase1">me</span> with <span className="phrase2">can</span>dor</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>& <span className="phrase3">check</span> it at the <span className="phrase2">do</span>or.</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>Stand <span className="phrase3">out</span> by knowing</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>perfection is a <span className="phrase3">my</span>th.</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}><span className="phrase3 phrase4">Work</span> the rules over</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}><span className="phrase4">with</span> abandon & most</div>
-                  <div className="hero-line" style={{lineHeight: '0.9'}}>of all, Make a <span className="phrase4">me</span>ss.</div>
+            <div className="flex flex-row pb-10">        
+                <h1 className="hero-headline sm:max-w-[900px]" style={{lineHeight: '0.8'}}>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}><span className="phrase1">a</span>ny time things seem</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>a <span className="phrase1">bit</span> <span className="phrase2">stuff</span>y, open a</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>window <span className="phrase1">about</span> <span className="phrase2">i</span>t. View</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>the la<span className="phrase1">me</span> with <span className="phrase2">can</span>dor</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>& <span className="phrase3">check</span> it at the <span className="phrase2">do</span>or.</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>Stand <span className="phrase3">out</span> by knowing</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>perfection is a <span className="phrase3">my</span>th.</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}><span className="phrase3 phrase4">Work</span> the rules over</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}><span className="phrase4">with</span> abandon & most</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>of all, Make a <span className="phrase4">me</span>ss.</div>
                 </h1>
             </div>
         </div>
