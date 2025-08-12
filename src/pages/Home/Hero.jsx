@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import austinImage from '../../assets/austin.png';
 
 const Hero = () => {
   const container = useRef();
@@ -255,19 +256,26 @@ const Hero = () => {
   return (
     <>
     <div ref={container} className="flex flex-col p-4 justify-end h-[calc(100dvh-78px)]">
-            <div className="flex flex-row pb-10">        
-                <h1 className="hero-headline sm:max-w-[900px]" style={{lineHeight: '0.8'}}>
+            <div className="flex flex-row items-end justify-between">        
+                <h1 className="hero-headline sm:max-w-[900px] flex-1" style={{lineHeight: '0.8'}}>
                   <div className="hero-line" style={{lineHeight: '0.8'}}><span className="phrase1">a</span>ny time things seem</div>
                   <div className="hero-line" style={{lineHeight: '0.8'}}>a <span className="phrase1">bit</span> <span className="phrase2">stuff</span>y, open a</div>
                   <div className="hero-line" style={{lineHeight: '0.8'}}>window <span className="phrase1">about</span> <span className="phrase2">i</span>t. View</div>
                   <div className="hero-line" style={{lineHeight: '0.8'}}>the la<span className="phrase1">me</span> with <span className="phrase2">can</span>dor</div>
                   <div className="hero-line" style={{lineHeight: '0.8'}}>& <span className="phrase3">check</span> it at the <span className="phrase2">do</span>or.</div>
-                  <div className="hero-line" style={{lineHeight: '0.8'}}>Stand <span className="phrase3">out</span> by knowing</div>
-                  <div className="hero-line" style={{lineHeight: '0.8'}}>perfection is a <span className="phrase3">my</span>th.</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>Stand <span className="phrase3">out</span> by refusing</div>
+                  <div className="hero-line" style={{lineHeight: '0.8'}}>the <span className="phrase3">my</span>th of perfection.</div>
                   <div className="hero-line" style={{lineHeight: '0.8'}}><span className="phrase3 phrase4">Work</span> the rules over</div>
                   <div className="hero-line" style={{lineHeight: '0.8'}}><span className="phrase4">with</span> abandon & most</div>
-                  <div className="hero-line" style={{lineHeight: '0.8'}}>of all, Make a <span className="phrase4">me</span>ss.</div>
+                  <div className="hero-line pb-10" style={{lineHeight: '0.8'}}>of all, Make a <span className="phrase4">me</span>ss.</div>
                 </h1>
+                <div className="hidden md:block ml-8">
+                  <img 
+                    src={austinImage} 
+                    alt="Austin" 
+                    className="max-w-[300px] lg:max-w-[400px] xl:max-w-[500px] h-auto object-contain"
+                  />
+                </div>
             </div>
         </div>
     </>

@@ -143,15 +143,19 @@ body {
 /* ------------------- XXXXXXXXXXXXXXX HOVER UNDERLINES NEED TO BE FIXED IN NAV SECTION XXXXXXXXXXXXXX --------------------*/
 
 .nav-text::after {
-  @apply bg-mainpink dark:bg-darkyellow;
   content: '';
   position: absolute;
-  width: 100%;
+  width: 110%;
   transform: scaleX(0);
-  height: 1px;
+  height: 2px;
   bottom: 0;
-  left: 0;
+  left: -5%;
   transition: transform 0.25s ease-out;
+  background-color: #F991CC; /* mainpink for light mode */
+}
+
+.dark .nav-text::after {
+  background-color: #F3FF00; /* mainyellow for dark mode */
 }
 
 .nav-text:hover::after {
