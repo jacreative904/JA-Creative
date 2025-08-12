@@ -7,6 +7,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Geist';
+  src: url('./assets/fonts/Geist-SemiBold.ttf') format('truetype');
+  font-weight: semibold;
+  font-style: normal;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -78,7 +85,7 @@ body {
 }
 
 .hero-line {
-  @apply text-darkgrey;
+  @apply text-darkgrey dark:text-darktext;
 }
 
 .animate-slide-left {
