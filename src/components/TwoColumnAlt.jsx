@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { splitTextIntoWords } from '../utils/textSplitter';
 import Button from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,13 +23,8 @@ const TwoColumnAlt = (props) => {
 
     if (!section) return;
 
-    // Split text into words
-    const headlineWords = splitTextIntoWords(headline);
-    const fancyWords = splitTextIntoWords(fancyText);
-    const bodyWords = splitTextIntoWords(bodyText);
-
     // Set initial states
-    gsap.set([...headlineWords, ...fancyWords, ...bodyWords, button, image], {
+    gsap.set([headline, fancyText, bodyText, button, image], {
       opacity: 0,
       y: 50
     });
@@ -55,26 +49,23 @@ const TwoColumnAlt = (props) => {
       duration: 1,
       ease: "power2.out"
     })
-    .to(headlineWords, {
+    .to(headline, {
       opacity: 1,
       y: 0,
       duration: 0.8,
-      stagger: 0.1,
       ease: "power2.out"
     }, "-=0.6")
-    .to(fancyWords, {
+    .to(fancyText, {
       opacity: 1,
       y: 0,
       scale: 1,
       duration: 1,
-      stagger: 0.1,
       ease: "back.out(1.7)"
     }, "-=0.4")
-    .to(bodyWords, {
+    .to(bodyText, {
       opacity: 1,
       y: 0,
       duration: 0.6,
-      stagger: 0.02,
       ease: "power2.out"
     }, "-=0.3")
     .to(button, {

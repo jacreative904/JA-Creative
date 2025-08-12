@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Geist';
+  src: url('./assets/fonts/Geist-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -13,7 +20,7 @@
   
   
   /*--- Light Mode ---*/
-  --color-mainbg: #FBFAF0;
+  --color-mainbg: #F9F9F9;
   --color-mainyellow: #F3FF00;
   --color-mainpink: #F991CC;
   --color-mainteal: #0AA9D0;
@@ -51,9 +58,9 @@ body {
   @apply text-4xl font-normal uppercase pb-4;
 }
 
-.headline-fancy {
+/* .headline-fancy {
   @apply font-fancy text-7xl text-mainpink dark:text-darkteal normal-case;
-}
+} */
 
 /* -------------------Navbar Styling --------------------*/
 
@@ -68,6 +75,10 @@ body {
 .animate-fade-up {
   opacity: 0;
   transform: translateY(30px);
+}
+
+.hero-line {
+  @apply text-darkgrey;
 }
 
 .animate-slide-left {
@@ -96,6 +107,12 @@ body {
   display: inline-block;
   opacity: 0;
   transform: translateY(10px);
+}
+
+.split-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 /* Performance optimization for animated elements */
@@ -166,20 +183,22 @@ body {
 /* -------------------Hero Section --------------------*/
 
 .hero-headline {
-  @apply font-display text-maindark dark:text-darklight uppercase font-normal text-6xl leading-9 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem];
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  @apply text-maindark dark:text-darklight uppercase text-xl leading-5 md:text-xl md:leading-[3rem] lg:text-xl lg:leading-[3rem] xl:text-[4rem] xl:leading-[4rem];
 }
 
-.hero-headline-thin {
+/* .hero-headline-thin {
   @apply font-display text-maindark dark:text-darklight uppercase font-thin text-6xl leading-8 md:text-8xl md:leading-[6rem] lg:text-9xl lg:leading-[7rem] xl:text-[10rem] xl:leading-[9rem]; 
 }
 
 .hero-headline-fancy {
   @apply font-fancy text-mainpink dark:text-darkyellow text-7xl normal-case md:text-9xl md:leading-[1rem] lg:text-[10rem] lg:leading-[1rem] xl:text-[12rem];
-}
+} */
 
-.hero-body-text {
+/* .hero-body-text {
   @apply font-text text-maintext dark:text-darklight font-normal leading-7 md:text-xl md:leading-[2.3rem] lg:text-xl lg:leading-[2.5rem] xl:text-2xl xl:leading-[3rem];
-}
+} */
 
 .two-col-img {
   @apply max-w-[25rem] md:max-w-[30rem];

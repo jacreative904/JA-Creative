@@ -4,6 +4,8 @@ import TwoColumn from '../../components/TwoColumn'
 import image2 from '../../assets/image2.png'
 import image3 from '../../assets/image3.png'
 import TwoColumnAlt from '../../components/TwoColumnAlt'
+import TimelineTraditional from '../../components/TimelineTraditional'
+import { timelineData } from '../../data/timelineData'
 
 const twoColumn = {
      headline : {
@@ -74,6 +76,18 @@ const HomePage = ( normalText, fancyText, bodyText, link, linkText ) => {
                     img={twoColumn.img.fileName}
                     alt={twoColumn.img.altTag}
                />
+               
+               {/* Timeline Section */}
+               <div className="bg-maingrey/20 dark:bg-darkgrey/10">
+                    <div className="text-center py-12">
+                         <h2 className="headline text-4xl mb-4">
+                              <span>Professional </span>
+                              <span className="headline-fancy">Timeline</span>
+                         </h2>
+                         <p className="text-maintext dark:text-darklight font-text mb-8">My Career Journey</p>
+                    </div>
+                    <TimelineTraditional timelineData={timelineData} />
+               </div>
           </div>
   )
 }

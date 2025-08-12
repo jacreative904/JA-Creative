@@ -24,7 +24,7 @@ const MobileMenu = ({menuOpen, setMenuOpen}) => {
         <ul>
           <li>
             <Link 
-                to="/"
+                to="/about"
                 onClick={() => setMenuOpen(false)}
                 className={`text-4xl text-darklight my-4 transform transition-transform duration-300 mb-5
                         ${
@@ -32,24 +32,9 @@ const MobileMenu = ({menuOpen, setMenuOpen}) => {
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-5"
                         }
-                `}>Home
-            </Link>
-            <hr className='w-90 text-maingrey dark:text-darkyellow mt-[20px] mb-[20px]'/>
-        </li>
-        
-        <li>
-            <Link 
-                to="/about"
-                onClick={() => setMenuOpen(false)}
-                className={`text-4xl text-darklight my-4 transform transition-transform duration-300
-                        ${
-                            menuOpen 
-                                ? "opacity-100 translate-y-0"
-                                : "opacity-0 translate-y-5"
-                            }
                 `}>About
-            <hr className='w-90 text-maingrey dark:text-darkyellow mt-[20px] mb-[20px]'/>
             </Link>
+            <hr className='w-90 text-maingrey dark:text-darkyellow mt-[20px] mb-[20px]'/>
         </li>
         
         <li>
@@ -59,24 +44,40 @@ const MobileMenu = ({menuOpen, setMenuOpen}) => {
                 className={`text-4xl text-darklight my-4 transform transition-transform duration-300
                         ${
                             menuOpen 
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 translate-y-5"
-                        }
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-5"
+                            }
                 `}>Skills
+            <hr className='w-90 text-maingrey dark:text-darkyellow mt-[20px] mb-[20px]'/>
             </Link>
         </li>
         
-        <li className='mt-[40px]'>
+        <li>
             <Link 
-            to="/contact" 
-            onClick={() => setMenuOpen(false)}
-            className={`text-4xl text-darklight dark:text-darkbg transform transition-transform duration-300 bg-mainpink dark:bg-mainyellow px-[40px] py-[10px]
+                to="/projects"
+                onClick={() => setMenuOpen(false)}
+                className={`text-4xl text-darklight my-4 transform transition-transform duration-300
                         ${
                             menuOpen 
-                                ? "opacity-100 translate-y-0"
-                                : "opacity-0 translate-y-5"
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-5"
                         }
-            `}>Contact
+                `}>Projects
+            </Link>
+            <hr className='w-90 text-maingrey dark:text-darkyellow mt-[20px] mb-[20px]'/>
+        </li>
+        
+        <li>
+            <Link 
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className={`text-4xl text-darklight my-4 transform transition-transform duration-300
+                        ${
+                            menuOpen 
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-5"
+                        }
+                `}>Contact
             </Link>
         </li>
         </ul>

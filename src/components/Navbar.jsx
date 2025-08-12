@@ -20,7 +20,7 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
                 // Set initial state - items start from bottom with 0% opacity
                 gsap.set(validElements, { opacity: 0, y: 30 });
                 
-                // Animate in with stagger: Home -> About -> Skills
+                // Animate in with stagger: About -> Skills -> Projects -> Contact
                 gsap.to(validElements, {
                     opacity: 1,
                     y: 0,
@@ -61,31 +61,29 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
         <ul className="flex flex-col p-4 md:p-0 mt-4 md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li ref={el => navItemsRef.current[0] = el} className="nav-item">
             <Link 
-                to="/"
-                className="block font-bold py-2 px-3 nav-text left">Home
-            </Link>
-          </li>
-          <li ref={el => navItemsRef.current[1] = el} className="nav-item">
-            <Link 
                 to="/about"
                 className="block font-bold py-2 px-3 nav-text left">About
             </Link>
           </li>
-          <li ref={el => navItemsRef.current[2] = el} className="nav-item">
+          <li ref={el => navItemsRef.current[1] = el} className="nav-item">
             <Link 
                 to="/skills"
                 className="block font-bold py-2 px-3 nav-text left">Skills
             </Link>
           </li>
+          <li ref={el => navItemsRef.current[2] = el} className="nav-item">
+            <Link 
+                to="/projects"
+                className="block font-bold py-2 px-3 nav-text left">Projects
+            </Link>
+          </li>
+          <li ref={el => navItemsRef.current[3] = el} className="nav-item">
+            <Link 
+                to="/contact"
+                className="block font-bold py-2 px-3 nav-text left">Contact
+            </Link>
+          </li>
         </ul>
-      </div>
-      
-      {/* ------ Contact Button (Right Side) ----- */}
-      <div className="hidden md:flex md:order-2">
-        <Link 
-          to="/contact" 
-          className="flex font-bold text-center nav-cta space-x-3">Contact
-        </Link>
       </div>
       </div>
       </div>
