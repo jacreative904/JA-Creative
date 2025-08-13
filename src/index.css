@@ -158,7 +158,7 @@ body:has([data-page="home"]) {
   text-transform: uppercase;
   display: inline-block;
   position: relative;
-  @apply text-maindark dark:text-darklight;
+  @apply text-maintext dark:text-darklight;
 }
 
 /* ------------------- XXXXXXXXXXXXXXX HOVER UNDERLINES NEED TO BE FIXED IN NAV SECTION XXXXXXXXXXXXXX --------------------*/

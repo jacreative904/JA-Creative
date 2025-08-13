@@ -42,11 +42,11 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
     return <nav className="w-full px-8 py-4">
       <div className="flex flex-wrap items-center justify-between">
         <div className="flex gap-5">
-          <TransitionLink
+          {/* <TransitionLink
               to="/"
-              className='headline-regular self-center text-2xl font-bold whitespace-nowrap text-maindark dark:text-mainbg'>
-              JA Creative
-          </TransitionLink>
+              className='headline-regular self-center text-2xl font-bold whitespace-nowrap text-maintext dark:text-mainbg'>
+              JAMES AUSTIN
+          </TransitionLink> */}
           <DarkModeToggle />
         </div>
 
@@ -69,17 +69,23 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
         <ul className="flex flex-col p-4 md:p-0 mt-4 md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li ref={el => navItemsRef.current[0] = el} className="nav-item">
             <TransitionLink 
+                to="/"
+                className="block font-bold py-2 px-3 nav-text left">Home
+            </TransitionLink>
+          </li>
+          <li ref={el => navItemsRef.current[1] = el} className="nav-item">
+            <TransitionLink 
                 to="/about"
                 className="block font-bold py-2 px-3 nav-text left">About
             </TransitionLink>
           </li>
-          <li ref={el => navItemsRef.current[1] = el} className="nav-item">
+          <li ref={el => navItemsRef.current[2] = el} className="nav-item">
             <TransitionLink 
                 to="/skills"
                 className="block font-bold py-2 px-3 nav-text left">Skills
             </TransitionLink>
           </li>
-          <li ref={el => navItemsRef.current[2] = el} className="nav-item">
+          <li ref={el => navItemsRef.current[3] = el} className="nav-item">
             <TransitionLink 
                 to="/projects"
                 className="block font-bold py-2 px-3 nav-text left">Projects

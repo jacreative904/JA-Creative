@@ -22,13 +22,13 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setIsDarkMode(!isDarkMode)}
-      className="bg-linear-to-r from-mainteal to-mainpink dark:to-darkyellow bg-no-repeat bg-center bg-contain w-20 grid justify-items-stretch content-center rounded-2xl"
+      className="bg-linear-to-r from-mainteal to-mainpink dark:to-darkyellow bg-no-repeat bg-center bg-contain w-24 grid justify-items-stretch content-center rounded-3xl"
     >
       { isDarkMode 
       ?     
-          <img src={moon} className='h-6 pl-2 justify-self-start'/>
+          <img src={moon} className='h-10 pl-2 pt-2 pb-2 justify-self-start'/>
       :
-          <img src={sun} className='h-6 pr-2 justify-self-end'/>
+          <img src={sun} className='h-10 pr-2 pt-2 pb-2 justify-self-end'/>
       }
     </button>
   );
