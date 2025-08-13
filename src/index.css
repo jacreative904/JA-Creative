@@ -64,13 +64,15 @@ body[style*="background-color"] {
   padding: 0 !important;
 }
 
-/* Ensure home page has no overflow */
+/* Default scrolling behavior */
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 html {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Specific styling for home page to prevent any scrolling */
@@ -78,6 +80,39 @@ body:has([data-page="home"]) {
   overflow: hidden !important;
   height: 100vh !important;
   padding: 0 !important;
+}
+
+html:has([data-page="home"]) {
+  overflow: hidden !important;
+}
+
+/* Projects page styling - ensure scrolling is enabled */
+body:has([data-page="projects"]) {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+html:has([data-page="projects"]) {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* Smooth scrolling for projects page */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced smooth scrolling with CSS */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* ---Typopgrahy--- */

@@ -6,6 +6,7 @@ import HomePage from './pages/Home/HomePage.jsx';
 import AboutPage from './pages/About/AboutPage.jsx';
 import SkillsPage from './pages/Skills/SkillsPage.jsx';
 import ContactPage from './pages/Contact/ContactPage.jsx';
+import ProjectsPage from './pages/Projects/ProjectsPage.jsx';
 
 import Navbar from './components/Navbar.jsx'
 import MobileMenu from './components/MobileMenu.jsx';
@@ -35,6 +36,7 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/skills' element={<SkillsPage />} />
+            <Route path='/projects' element={<ProjectsPage />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='*' element={<NotFoundPage />} />
           </Routes>
