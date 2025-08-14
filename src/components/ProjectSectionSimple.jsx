@@ -60,7 +60,7 @@ const ProjectSectionSimple = ({
       duration: 1
     });
 
-    // Separate exit animation timeline
+    // Separate exit animation timeline (removed scale to prevent conflict with parallax)
     const exitTl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
@@ -73,7 +73,6 @@ const ProjectSectionSimple = ({
 
     exitTl.to(['.image-container', '.content-section'], {
       y: -50,
-      scale: 0.95,
       ease: "none",
       duration: 1
     });
@@ -102,11 +101,23 @@ const ProjectSectionSimple = ({
           
           {/* Image Section */}
           <div className={`relative ${imageLeft ? 'lg:order-1' : 'lg:order-2'}`}>
-            <div className="image-container aspect-[4/3] overflow-hidden rounded-lg bg-maingrey dark:bg-hovergrey">
+            <div 
+              className="image-container aspect-[4/3] overflow-hidden rounded-lg bg-maingrey dark:bg-hovergrey"
+              style={{
+                transform: 'translateZ(0)', // Force hardware acceleration
+                backfaceVisibility: 'hidden' // Prevent flickering
+              }}
+            >
               <img 
                 src={image} 
                 alt={imageAlt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transform-gpu"
+                style={{
+                  minWidth: '110%',
+                  minHeight: '110%',
+                  transformOrigin: 'center center',
+                  willChange: 'transform' // Optimize for animations
+                }}
                 onError={(e) => {
                   // Fallback for missing images
                   e.target.style.display = 'none';
@@ -128,7 +139,14 @@ const ProjectSectionSimple = ({
           </div>
 
           {/* Content Section */}
-          <div className={`content-section space-y-6 ${imageLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+          <div 
+            className={`content-section space-y-6 ${imageLeft ? 'lg:order-2' : 'lg:order-1'}`}
+            style={{
+              transform: 'translateZ(0)', // Force hardware acceleration
+              backfaceVisibility: 'hidden', // Prevent flickering
+              perspective: '1000px' // Improve 3D rendering
+            }}
+          >
             <div>
               <h2 className="hero-headline text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight">
                 {title}

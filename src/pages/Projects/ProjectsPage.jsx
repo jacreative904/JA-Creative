@@ -40,13 +40,13 @@ const ProjectsPage = () => {
           trigger: headerRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1.5, // Smooth scrubbing tied to scroll position
+          scrub: 1.5,
           invalidateOnRefresh: true
         },
         opacity: 0.2,
         scale: 0.9,
         y: -100,
-        ease: "none" // Use "none" for scrub animations
+        ease: "none"
       });
 
       // Add parallax effect to header text
@@ -55,13 +55,54 @@ const ProjectsPage = () => {
           trigger: headerRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: 2, // Slower parallax effect
+          scrub: 2,
           invalidateOnRefresh: true
         },
         y: -50,
         ease: "none"
       });
     }
+
+    // Add smooth parallax lag to project sections
+    const projectSections = gsap.utils.toArray('[data-project-section]');
+    
+    projectSections.forEach((section, index) => {
+      // Create a timeline for smoother coordinated animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2, // Reduced scrub for faster settling
+          invalidateOnRefresh: true
+        }
+      });
+
+      // Add subtle lag to entire sections with smoother movement
+      tl.to(section, {
+        y: -20, // Reduced movement for less jumpiness
+        ease: "none"
+      });
+
+      // Add different lag speeds to images only (content handled by ProjectSectionSimple)
+      const images = section.querySelectorAll('.image-container, img');
+
+      // Smoother image parallax with faster settling
+      images.forEach(img => {
+        gsap.to(img, {
+          y: -10, // Reduced movement
+          scale: 1.1, // Scale up to ensure full coverage during movement
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.5, // Reduced scrub for faster settling
+            invalidateOnRefresh: true
+          },
+          ease: "power1.out" // Smoother easing
+        });
+      });
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -95,18 +136,19 @@ const ProjectsPage = () => {
 
         {/* Project Sections using ProjectSectionSimple */}
         {projectsData.map((project, index) => (
-          <ProjectSectionSimple
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            imageAlt={project.title}
-            type={project.type}
-            technologies={project.technologies}
-            buttonText="View Details"
-            onButtonClick={() => openModal(project)}
-            imageLeft={index % 2 === 0}
-          />
+          <div key={project.id} data-project-section>
+            <ProjectSectionSimple
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              imageAlt={project.title}
+              type={project.type}
+              technologies={project.technologies}
+              buttonText="View Details"
+              onButtonClick={() => openModal(project)}
+              imageLeft={index % 2 === 0}
+            />
+          </div>
         ))}
 
         {/* Project Modal */}
