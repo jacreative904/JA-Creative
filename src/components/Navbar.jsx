@@ -1,11 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, memo, useCallback } from 'react';
 import { gsap } from 'gsap';
 import DarkModeToggle from './DarkModeToggle';
 import TransitionLink from './TransitionLink';
 
-
-const Navbar = ({menuOpen, setMenuOpen}) => {
+const Navbar = memo(({menuOpen, setMenuOpen}) => {
     const navItemsRef = useRef([]);
 
     useEffect(() => {
@@ -96,6 +94,6 @@ const Navbar = ({menuOpen, setMenuOpen}) => {
       </div>
       </div>
     </nav>
-}
+});
 
 export default Navbar;

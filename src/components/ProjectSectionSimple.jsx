@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const ProjectSectionSimple = ({ 
+const ProjectSectionSimple = memo(({ 
   title, 
   description, 
   image, 
@@ -189,6 +189,6 @@ const ProjectSectionSimple = ({
       </div>
     </section>
   );
-};
+});
 
 export default ProjectSectionSimple;

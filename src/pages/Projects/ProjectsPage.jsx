@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PageWrapper from '../../components/PageWrapper';
@@ -109,15 +109,34 @@ const ProjectsPage = () => {
     };
   }, []);
 
-  const openModal = (project) => {
+  const openModal = useCallback((project) => {
     setSelectedProject(project);
     document.body.style.overflow = 'hidden';
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedProject(null);
     document.body.style.overflow = '';
-  };
+  }, []);
+
+  // Memoize project sections to prevent unnecessary re-renders
+  const projectSections = useMemo(() => 
+    projectsData.map((project, index) => (
+      <div key={project.id} data-project-section>
+        <ProjectSectionSimple
+          title={project.title}
+          description={project.description}
+          image={project.image}
+          imageAlt={project.title}
+          type={project.type}
+          technologies={project.technologies}
+          buttonText="View Details"
+          onButtonClick={() => openModal(project)}
+          imageLeft={index % 2 === 0}
+        />
+      </div>
+    )), [openModal]
+  );
 
   return (
     <PageWrapper>
@@ -135,21 +154,7 @@ const ProjectsPage = () => {
         </section>
 
         {/* Project Sections using ProjectSectionSimple */}
-        {projectsData.map((project, index) => (
-          <div key={project.id} data-project-section>
-            <ProjectSectionSimple
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              imageAlt={project.title}
-              type={project.type}
-              technologies={project.technologies}
-              buttonText="View Details"
-              onButtonClick={() => openModal(project)}
-              imageLeft={index % 2 === 0}
-            />
-          </div>
-        ))}
+        {projectSections}
 
         {/* Project Modal */}
         {selectedProject && (

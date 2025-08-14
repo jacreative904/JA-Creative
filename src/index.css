@@ -5,6 +5,7 @@
   src: url('./assets/fonts/Geist-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  font-display: swap; /* Improve loading performance */
 }
 
 @font-face {
@@ -12,6 +13,7 @@
   src: url('./assets/fonts/Geist-SemiBold.ttf') format('truetype');
   font-weight: semibold;
   font-style: normal;
+  font-display: swap; /* Improve loading performance */
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -160,7 +162,7 @@ html {
   transform: scale(0.8);
 }
 
-/* Text splitting classes */
+/* Text splitting classes - Used by Hero component */
 .split-word {
   display: inline-block;
   opacity: 0;

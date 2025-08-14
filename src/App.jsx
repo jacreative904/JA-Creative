@@ -2,17 +2,18 @@ import React, { useState, Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import "./index.css";
 
-import HomePage from './pages/Home/HomePage.jsx';
-import AboutPage from './pages/About/AboutPage.jsx';
-import SkillsPage from './pages/Skills/SkillsPage.jsx';
-import ContactPage from './pages/Contact/ContactPage.jsx';
-import ProjectsPage from './pages/Projects/ProjectsPage.jsx';
+// Lazy load pages for better performance
+const HomePage = lazy(() => import('./pages/Home/HomePage.jsx'));
+const AboutPage = lazy(() => import('./pages/About/AboutPage.jsx'));
+const SkillsPage = lazy(() => import('./pages/Skills/SkillsPage.jsx'));
+const ContactPage = lazy(() => import('./pages/Contact/ContactPage.jsx'));
+const ProjectsPage = lazy(() => import('./pages/Projects/ProjectsPage.jsx'));
+const NotFoundPage = lazy(() => import('./components/NotFoundPage.jsx'));
 
+// Keep these as regular imports since they're needed immediately
 import Navbar from './components/Navbar.jsx'
 import MobileMenu from './components/MobileMenu.jsx';
 import CustomCursor from './components/CustomCursor.jsx';
-// import LoadingScreen from './components/LoadingScreen.jsx'; // Commented out - can be re-enabled later
-import NotFoundPage from './components/NotFoundPage.jsx';
 import { PageTransitionProvider } from './contexts/PageTransitionContext.jsx';
 
 function App() {
