@@ -1,0 +1,1 @@
+import{j as o,L as e}from"./index-Msnaks0a.js";const t=()=>o.jsxs("div",{children:[o.jsx("h1",{children:"404 - Not Found"}),o.jsx("p",{children:"Whoopsies. The page you're looking for doesn't exist."}),o.jsx(e,{to:"/",children:"Back to Home"})]});export{t as default};

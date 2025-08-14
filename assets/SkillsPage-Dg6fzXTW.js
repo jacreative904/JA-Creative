@@ -1,0 +1,1 @@
+import{j as r}from"./index-Msnaks0a.js";import{P as e}from"./PageWrapper-B6Vtt_eW.js";function a(){return r.jsx(e,{children:r.jsx("div",{children:r.jsx("h1",{children:"Skills Page"})})})}export{a as default};

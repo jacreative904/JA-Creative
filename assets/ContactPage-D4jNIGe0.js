@@ -1,0 +1,1 @@
+import{j as r}from"./index-Msnaks0a.js";import{P as t}from"./PageWrapper-B6Vtt_eW.js";function n(){return r.jsx(t,{children:r.jsx("div",{children:r.jsx("h1",{children:"Contact Page"})})})}export{n as default};
