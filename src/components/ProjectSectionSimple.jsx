@@ -93,7 +93,7 @@ const ProjectSectionSimple = memo(({
   };
 
   return (
-    <section ref={container} className="min-h-screen flex items-center px-8 py-20">
+    <section ref={container} className="min-h-screen flex items-center px-8 py-20 bg-mainbg dark:bg-maindark">
       <div className="max-w-7xl mx-auto w-full">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
           imageLeft ? '' : 'lg:grid-flow-col-dense'

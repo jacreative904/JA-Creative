@@ -1,10 +1,10 @@
 export const projectsData = [
   {
     id: 1,
-    title: "E-Commerce Platform Redesign",
+    title: "MUSE Award Winning Palm Springs Microsite",
     type: "website",
-    image: "/src/assets/image.png", // Using existing placeholder
-    description: "Complete redesign of a modern e-commerce platform focusing on user experience, conversion optimization, and mobile-first design principles.",
+    image: "/src/assets/vibe.gif", // Using existing placeholder
+    description: "Complete and buildout of Palm Springs Convention Center website. Design features ",
     overview: "This project involved a comprehensive redesign of an existing e-commerce platform that was struggling with low conversion rates and poor user engagement. The goal was to create a modern, intuitive shopping experience that would increase sales and improve customer satisfaction.",
     challenges: "The main challenges included outdated design patterns, poor mobile experience, complex checkout process, and lack of visual hierarchy. The existing platform had a 2.3% conversion rate and high cart abandonment.",
     solutions: "Implemented a mobile-first design approach, simplified the checkout process to 3 steps, improved product discovery with better filtering and search, and created a cohesive visual design system with clear call-to-actions.",

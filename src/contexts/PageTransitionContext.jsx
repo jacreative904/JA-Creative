@@ -13,7 +13,6 @@ export const usePageTransitionContext = () => {
 export const PageTransitionProvider = ({ children }) => {
   const [transitionState, setTransitionState] = useState({
     isTransitioning: false,
-    backgroundColor: null,
     targetRoute: null
   });
 
@@ -24,7 +23,6 @@ export const PageTransitionProvider = ({ children }) => {
   const resetTransitionState = () => {
     setTransitionState({
       isTransitioning: false,
-      backgroundColor: null,
       targetRoute: null
     });
   };
