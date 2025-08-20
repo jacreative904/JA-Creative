@@ -19,24 +19,27 @@ const ProjectSectionSimple = memo(({
   const container = useRef();
 
   useGSAP(() => {
+    const imageContainer = container.current.querySelector('.image-container');
+    const contentSection = container.current.querySelector('.content-section');
+
     // Set initial states for reveal effect
-    gsap.set('.image-container', { 
+    gsap.set(imageContainer, { 
       clipPath: "inset(0 100% 0 0)" // Start with image completely hidden (clipped from right)
     });
-    gsap.set('.content-section', { y: 80, x: imageLeft ? 100 : -100 });
+    gsap.set(contentSection, { y: 80, x: imageLeft ? 100 : -100 });
 
     // Fast image reveal timeline - starts when section is a quarter up the page
     const imageTl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
-        start: "top 45%", // Start when section is 25% up the page (quarter way up)
-        end: "top 40%", // Still completes when top is 40% up (same end point)
+        start: "top 75%", // Start when section is 25% up the page (quarter way up)
+        end: "top 70%", // Still completes when top is 40% up (same end point)
         scrub: 1.2,
         invalidateOnRefresh: true
       }
     });
 
-    imageTl.to('.image-container', {
+    imageTl.to(imageContainer, {
       clipPath: "inset(0 0% 0 0)", // Reveal the full image quickly
       ease: "none",
       duration: 1
@@ -53,7 +56,7 @@ const ProjectSectionSimple = memo(({
       }
     });
 
-    contentTl.to('.content-section', {
+    contentTl.to(contentSection, {
       y: 0,
       x: 0,
       ease: "none",
@@ -71,7 +74,7 @@ const ProjectSectionSimple = memo(({
       }
     });
 
-    exitTl.to(['.image-container', '.content-section'], {
+    exitTl.to([imageContainer, contentSection], {
       y: -50,
       ease: "none",
       duration: 1
@@ -102,7 +105,7 @@ const ProjectSectionSimple = memo(({
           {/* Image Section */}
           <div className={`relative ${imageLeft ? 'lg:order-1' : 'lg:order-2'}`}>
             <div 
-              className="image-container aspect-[4/3] overflow-hidden rounded-lg bg-maingrey dark:bg-hovergrey"
+              className="image-container aspect-[4/4] overflow-hidden rounded-lg bg-maingrey dark:bg-hovergrey"
               style={{
                 transform: 'translateZ(0)', // Force hardware acceleration
                 backfaceVisibility: 'hidden' // Prevent flickering
@@ -111,10 +114,8 @@ const ProjectSectionSimple = memo(({
               <img 
                 src={image} 
                 alt={imageAlt}
-                className="w-full h-full object-cover transform-gpu"
+                className="w-full h-full object-contain transform-gpu"
                 style={{
-                  minWidth: '110%',
-                  minHeight: '110%',
                   transformOrigin: 'center center',
                   willChange: 'transform' // Optimize for animations
                 }}

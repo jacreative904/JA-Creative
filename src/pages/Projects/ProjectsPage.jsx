@@ -84,24 +84,6 @@ const ProjectsPage = () => {
         ease: "none"
       });
 
-      // Add different lag speeds to images only (content handled by ProjectSectionSimple)
-      const images = section.querySelectorAll('.image-container, img');
-
-      // Smoother image parallax with faster settling
-      images.forEach(img => {
-        gsap.to(img, {
-          y: -10, // Reduced movement
-          scale: 1.1, // Scale up to ensure full coverage during movement
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.5, // Reduced scrub for faster settling
-            invalidateOnRefresh: true
-          },
-          ease: "power1.out" // Smoother easing
-        });
-      });
     });
 
     return () => {

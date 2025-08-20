@@ -96,7 +96,7 @@ const ProjectModal = ({ project, onClose }) => {
         {/* Project Image */}
         <div className="aspect-[16/9] overflow-hidden rounded-t-lg bg-maingrey dark:bg-hovergrey">
           <img 
-            src={project.image} 
+            src={project.modalImage || project.image} 
             alt={project.title}
             className="w-full h-full object-cover"
             onError={(e) => {

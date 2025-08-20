@@ -3,7 +3,8 @@ export const projectsData = [
     id: 1,
     title: "MUSE Award Winning Palm Springs Microsite",
     type: "website",
-    image: "/src/assets/vibe.gif", // Using existing placeholder
+    image: "/src/assets/palm-springs-site.png", // Using existing placeholder
+    modalImage: "/src/assets/AAD_LP.jpg", // Detailed view for modal
     description: "Complete and buildout of Palm Springs Convention Center website. Design features ",
     overview: "This project involved a comprehensive redesign of an existing e-commerce platform that was struggling with low conversion rates and poor user engagement. The goal was to create a modern, intuitive shopping experience that would increase sales and improve customer satisfaction.",
     challenges: "The main challenges included outdated design patterns, poor mobile experience, complex checkout process, and lack of visual hierarchy. The existing platform had a 2.3% conversion rate and high cart abandonment.",
@@ -16,6 +17,7 @@ export const projectsData = [
     title: "Brand Identity System",
     type: "branding",
     image: "/src/assets/image2.png",
+    modalImage: "/src/assets/logo_dark.png", // Detailed view for modal
     description: "Comprehensive brand identity development for a sustainable fashion startup, including logo design, color palette, typography, and brand guidelines.",
     overview: "Created a complete brand identity system for EcoThread, a sustainable fashion startup focused on ethical manufacturing and eco-friendly materials. The brand needed to communicate sustainability while maintaining a premium, modern aesthetic.",
     challenges: "The challenge was to create a brand that felt both environmentally conscious and luxurious, appealing to eco-minded consumers without appearing cheap or amateur. The brand needed to stand out in a crowded sustainable fashion market.",
@@ -28,6 +30,7 @@ export const projectsData = [
     title: "Interactive Motion Graphics Campaign",
     type: "motion design",
     image: "/src/assets/image3.png",
+    modalImage: "/src/assets/vibe.gif", // Detailed view for modal
     description: "Dynamic motion graphics campaign for a tech conference, featuring animated logos, promotional videos, and interactive digital displays.",
     overview: "Designed and animated a complete motion graphics package for TechForward 2024, a major technology conference. The project included opening titles, speaker introductions, transition graphics, and interactive lobby displays.",
     challenges: "Creating cohesive motion graphics that would work across multiple formats and screen sizes, from social media posts to large conference displays. The animations needed to be engaging but not distracting from the content.",
@@ -40,6 +43,7 @@ export const projectsData = [
     title: "Mobile Banking App UX",
     type: "web development",
     image: "/src/assets/austin.png",
+    modalImage: "/src/assets/image.png", // Detailed view for modal
     description: "User experience design and development for a next-generation mobile banking application with focus on accessibility and security.",
     overview: "Led the UX design and front-end development for SecureBank's new mobile application, focusing on creating an intuitive banking experience while maintaining the highest security standards.",
     challenges: "Balancing security requirements with user experience, ensuring accessibility compliance, and creating trust through design while simplifying complex financial processes.",
@@ -52,6 +56,7 @@ export const projectsData = [
     title: "Digital Marketing Campaign",
     type: "digital banner",
     image: "/src/assets/logo.png",
+    modalImage: "/src/assets/logo_light.png", // Detailed view for modal
     description: "Multi-platform digital advertising campaign featuring animated banners, social media graphics, and interactive display ads.",
     overview: "Created a comprehensive digital marketing campaign for a luxury watch brand's new product launch, spanning multiple digital platforms and formats.",
     challenges: "Creating compelling visuals that would perform well across different platforms (Google Ads, Facebook, Instagram, YouTube) while maintaining brand consistency and meeting various technical requirements.",
@@ -64,6 +69,7 @@ export const projectsData = [
     title: "Magazine Layout Design",
     type: "print ad",
     image: "/src/assets/dark-squiggle.png",
+    modalImage: "/src/assets/light_squiggle.png", // Detailed view for modal
     description: "Editorial design for a quarterly architecture magazine, featuring innovative layouts, typography, and visual storytelling.",
     overview: "Designed the complete layout for ArchitectureToday's special sustainability issue, featuring 12 major articles, photo essays, and architectural project showcases.",
     challenges: "Creating layouts that would showcase architectural photography effectively while maintaining readability, balancing white space with information density, and creating visual flow throughout the 120-page publication.",
